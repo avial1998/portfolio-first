@@ -1,0 +1,477 @@
+:root {
+  --clr-primary: rgb(14, 135, 216);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: var(--clr-primary);
+}
+a {
+  text-decoration: none;
+  color: rgb(14, 135, 216);
+}
+a:hover,
+a:focus {
+  color: rgb(7, 91, 148);
+  transform: scale(1.3);
+}
+.header {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  z-index: 3;
+  align-items: center;
+}
+.header-btn {
+  height: 40px !important;
+  width: 40px !important;
+  position: absolute;
+  right: 7%;
+  border-style: none;
+  border-radius: 50%;
+  background-color: rgb(235, 190, 45);
+  box-shadow: -3px 3px 0 rgb(7, 91, 148), -3px 0 0 rgb(7, 91, 148),
+    1px 3px 0 rgb(7, 91, 148), -3px 3px 10px rgb(7, 91, 148);
+}
+.header-btn:hover,
+.header-btn:focus {
+  outline: none;
+  cursor: pointer;
+  transform: scale(0.9);
+  box-shadow: -3px 3px 0 rgb(238, 223, 19), -3px 0 0 rgb(238, 223, 19),
+    1px 3px 0 rgb(238, 223, 19), -3px 3px 10px rgb(238, 223, 19);
+}
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 90vh;
+}
+.intro {
+  flex-grow: 2;
+  color: white;
+  padding-left: 10%;
+  padding-top: 6%;
+  font-size: 30px;
+}
+.intro h1:nth-child(1) {
+  animation: fadein 500ms ease-in;
+  animation-fill-mode: both;
+}
+.intro h1:nth-child(2) {
+  animation: fadein 500ms ease-in;
+  animation-delay: 500ms;
+  animation-fill-mode: both;
+}
+.intro h1:nth-child(3) {
+  animation: fadein 500ms ease-in;
+  animation-delay: 1000ms;
+  animation-fill-mode: both;
+}
+.home-image {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10%;
+}
+.def {
+  visibility: hidden;
+}
+.visible {
+  animation: dropanimation 600ms ease-in-out both;
+  clip-path: circle(0% at 150px 0px);
+  visibility: visible;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  top: 60%;
+  right: 8%;
+  background-color: white;
+  color: rgb(14, 135, 216);
+}
+
+li {
+  list-style: none;
+}
+.homeimg {
+  width: 250px;
+  height: 250px;
+  box-shadow: -3px 3px 5px rgb(7, 91, 148), 0px 3px 5px rgb(7, 91, 148);
+  border-radius: 50%;
+  background-image: url("/assets/profilepic.jpeg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+
+  animation: fadein 500ms ease-in 600ms 1 normal both;
+}
+
+.wrapper {
+  width: 100%;
+  height: 300px;
+  perspective: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+
+  -webkit-perspective: 700px;
+}
+.cube {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+
+  animation: cubeRotation 5s linear infinite alternate backwards;
+  animation-delay: 1800ms;
+}
+.cube div {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(14, 135, 216);
+  background-color: white;
+}
+.cube div:nth-child(1) {
+  transform: translateZ(75px);
+}
+.cube div:nth-child(2) {
+  transform: rotateX(180deg) translateZ(75px);
+}
+.cube div:nth-child(3) {
+  transform: rotateY(-90deg) translateZ(75px);
+}
+
+.cube div:nth-child(4) {
+  transform: rotateY(90deg) translateZ(75px);
+}
+
+.cube div:nth-child(5) {
+  transform: rotateX(90deg) translateZ(75px);
+}
+
+.cube div:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(75px);
+}
+@keyframes cubeRotation {
+  0% {
+    background-color: rgb(14, 135, 216);
+    transform: scale(0) rotateX(-35deg) rotateY(35deg);
+  }
+  20% {
+    background-color: white;
+    transform: scale(1) rotateX(-60deg) rotateY(120deg);
+  }
+  40% {
+    transform: rotateX(-120deg) rotateY(180deg);
+  }
+  60% {
+    transform: rotateX(-180deg) rotateY(35deg);
+  }
+  80% {
+    transform: translateX(60deg) rotateY(35deg);
+  }
+  100% {
+    transform: translateX(120deg) rotateY(-30deg);
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes dropanimation {
+  0% {
+    clip-path: circle(0% at 150px 0px);
+  }
+  100% {
+    clip-path: circle(150% at 150px 0px);
+  }
+}
+.portfolio-container {
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(233, 234, 235);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 3px 3px 3px rgb(7, 91, 148), inset 1px 1px white;
+
+  border-radius: 20px;
+}
+.live-container,
+.other-projects {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.live-header,
+.other-header {
+  width: 100%;
+  padding-left: 10%;
+  height: 10%;
+  margin: 0 auto 1%;
+  color: rgb(14, 135, 216);
+}
+.live-header h3,
+.other-header h3 {
+  color: rgb(235, 190, 45);
+  margin-bottom: 10px;
+}
+.contact {
+  padding: 0 1%;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  height: 50%;
+  margin: auto;
+  border-radius: 10px;
+}
+.contact svg:hover {
+  transform: scale(1.2);
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin: auto;
+  margin-bottom: 20px;
+
+  height: 230px;
+  width: 200px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px gray;
+}
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.live-gridbox,
+.grid-box {
+  display: grid;
+  width: 80%;
+  margin: 0px auto 1%;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.popupbox {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.active {
+  visibility: visible;
+  opacity: 1;
+}
+.popup-container {
+  max-width: 700px;
+
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.popup-container video {
+  width: 100%;
+}
+.close-btn {
+  display: flex;
+  text-align: right;
+  padding: 1%;
+}
+.close {
+  background-color: rgb(231, 69, 69);
+  height: 30px;
+  width: 30px;
+  color: white;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+}
+.hide {
+  display: none;
+}
+.popup-container p {
+  padding: 2%;
+}
+.live {
+  height: 250px;
+}
+.resume-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 70vh;
+
+  margin: 1% auto;
+  flex-direction: column;
+  color: white;
+}
+
+.gallery-container {
+  /* margin-top: 2%; */
+  display: grid;
+  padding: 1%;
+
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  margin: 2% auto;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "bags eyewear eyewear bike"
+    "car shoes hero childrens"
+    "oldman speaker speaker futurecar";
+}
+.gallery-container video {
+  width: 100%;
+}
+.gallery-container div:hover {
+  transform: scale(2);
+  cursor: grab;
+}
+.bags {
+  grid-area: bags;
+}
+.bike {
+  grid-area: bike;
+}
+.car {
+  grid-area: car;
+}
+.childrens {
+  grid-area: childrens;
+}
+.futurecar {
+  grid-area: futurecar;
+}
+.oldman {
+  grid-area: oldman;
+}
+.shoes {
+  grid-area: shoes;
+}
+.speaker {
+  grid-area: speaker;
+}
+.eyewear {
+  grid-area: eyewear;
+}
+.hero {
+  grid-area: hero;
+}
+.gallery-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+@media (max-width: 750px) {
+  .resume-container {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    padding: inherit 0;
+  }
+  .gallery-container {
+    width: 100%;
+    margin: auto;
+    padding: 0;
+
+    grid-template-columns: repeat(1, 1fr);
+
+    grid-template-areas:
+      "bags"
+      "bike"
+      "futurecar"
+      "eyewear"
+      "oldman"
+      "childrens"
+      "car"
+      "shoes"
+      "speaker"
+      "hero";
+  }
+  .gallery-container img {
+    width: 350px;
+    height: 350px;
+  }
+  .gallery-container div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  .gallery-container div:hover {
+    transform: none;
+  }
+  .resume-container h1 {
+    text-align: left;
+  }
+  .portfolio-container {
+    width: 100%;
+  }
+  .live-container,
+  .other-container {
+    width: 100%;
+  }
+  .live-header h3,
+  .other-header h3 {
+    margin: auto;
+    text-align: center;
+  }
+}

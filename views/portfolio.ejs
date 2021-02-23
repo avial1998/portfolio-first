@@ -1,0 +1,114 @@
+<%- include("partials/header") -%>
+
+    <div class="portfolio-container">
+        <div class="live-container">
+            <div class="live-header">
+                <h3>Live Projects</h3>
+            </div>
+            <div class="live-gridbox">
+                <% liveProjects.forEach(project=>{ %>
+                    <div class="card live" id="<%= project.id %>"">
+                        <img src=" <%=project.imgSrc %>" alt="<%= project.title %>" width=" 200px"
+                            height="150px" />
+                            <h4>
+                                <%= project.title %>
+                            </h4>
+                            <p>
+                                <%= project.tech %>
+                            </p>
+
+                            <p class="hide">
+                                <%=project.description %>
+                            </p>
+                            <p class="card-link">
+
+                                <%= project.link %>
+
+                            </p>
+
+                    </div>
+                    <% }) %>
+
+                        <!-- <div class="card" id="c-2">
+                    <img src="/assets/achat.png" alt="achat" width="200px" height="150px" />
+                    <h5>Title</h5>
+                    <p>Tech used</p>
+
+                </div>
+                <div class="card" id="c-3">
+                    <img src="/assets/acart.png" alt="acart" width="200px" height="150px" />
+                    <h5>Title</h5>
+                    <p>Tech used</p>
+
+                </div> -->
+            </div>
+        </div>
+        <div class="other-projects">
+            <div class="other-header">
+                <h3>Other Projects</h3>
+            </div>
+            <div class="grid-box">
+                <% otherProjects.forEach(project=>{ %>
+                    <div class="card other" id="<%= project.id %>"">
+                        <img src=" <%=project.imgSrc %>" alt="<%= project.title %>" width=" 200px"
+                            height="150px" />
+                            <h4>
+                                <%= project.title %>
+                            </h4>
+                            <p>
+                                <%= project.tech %>
+                            </p>
+                            <p class="hide">
+                                <%=project.description %>
+                            </p>
+                            <p class="card-link">
+                                <%= project.link %>
+                            </p>
+                    </div>
+                    <% }) %>
+                        <!-- <div class="card">
+                    <img src="/assets/Angular auth.png" alt="authApp" width="200px" height="150px" />
+                    <h5>Title</h5>
+                    <p>Tech used</p>
+                </div>
+            </div>
+        </div> -->
+                        <div class="popupbox " id="#">
+
+                            <div class="popup-container">
+                                <div class="close-btn" type="button"><button class="close">x</button></div>
+                                <video autoplay muted>
+                                    <source src="#" type="video/mp4">
+                                </video>
+                                <h2 class="popup-title">Title</h2>
+                                <p class="desc">Description</p>
+                                <p><a class="link" href="#">link</a></p>
+                            </div>
+                        </div>
+            </div>
+            <script>
+                var card = document.querySelectorAll(".card");
+                var popup = document.querySelector(".popupbox");
+                var close = document.querySelector(".close ");
+
+                card.forEach((item) => {
+                    item.addEventListener("click", () => {
+
+                        document.querySelector("video").setAttribute("src", `/assets/${item.id}.mp4`);
+                        document.querySelector(".popup-title").innerHTML = `${item.id}`;
+                        popup.setAttribute('id', `${item.id}`);
+                        var result = item.getElementsByClassName("hide");
+                        var link = item.getElementsByClassName("card-link");
+                        console.log(result);
+                        console.log(link[0]);
+                        document.querySelector(".desc").innerHTML = `${result[0].innerHTML}`;
+                        document.querySelector(".link").setAttribute("href", `${link[0].innerHTML}`);
+                        document.querySelector(".link").innerHTML = `${link[0].innerHTML}`;
+                        popup.classList.add("active");
+                    })
+                })
+                close.addEventListener("click", () => {
+                    popup.classList.remove("active");
+                })
+            </script>
+            <%- include("partials/footer") -%>
